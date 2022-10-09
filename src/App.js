@@ -1,25 +1,31 @@
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import "./App.css";
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
-}
+const App = () => {
+    return (
+        <div className="App">
+            <h1 className="">Responsive Font size</h1>
+            <h2>How to use</h2>
+            <form>
+                <div className="">
+                    <div>
+                        <label for="min-fs">Min Font Size</label> <br />
+                        <input type="number" id="min-fs"></input>
+                    </div>
+                    <div>
+                        <label for="max-fs">Max Font Size</label> <br />
+                        <input type="number" id="max-fs"></input>
+                    </div>
+                </div>
+                <div>
+                    <label for="min-vw">Min Viewport Size</label>
+                    <input type="number" id="min-vw"></input>
+                    <label for="max-vw">Max Viweport Size</label>
+                    <input type="number" id="max-vw"></input>
+                </div>
+            </form>
+        </div>
+    );
+};
 
 export default App;

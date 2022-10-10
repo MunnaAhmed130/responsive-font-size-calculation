@@ -11,14 +11,14 @@ module.exports = {
                 dimBlue: "rgba(9, 151, 124, 0.1)",
             },
             fontFamily: {
-                // poppins: ["Poppins", "sans-serif"],/
+                poppins: ["Bai Jamjuree", "Poppins", "sans-serif"],
             },
         },
         screens: {
-            xs: "480px",
+            xs: "425px",
             ss: "620px",
             sm: "768px",
-            md: "1060px",
+            md: "1024px",
             lg: "1200px",
             xl: "1700px",
         },

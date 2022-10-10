@@ -40,7 +40,7 @@ const App = () => {
             <form className={`${styles.form}`}>
                 <div className={`${styles.inputRowContainer}`}>
                     <div className={`${styles.inputContainer}`}>
-                        <label hmtlfor="min-fs" className="w-full">
+                        <label hmtlfor="min-fs" className={`${styles.label}`}>
                             Min Font Size
                         </label>{" "}
                         <br />
@@ -54,7 +54,10 @@ const App = () => {
                         ></input>
                     </div>
                     <div className={`${styles.inputContainer}`}>
-                        <label hmtlfor="max-fs">Max Font Size</label> <br />
+                        <label hmtlfor="max-fs" className={`${styles.label}`}>
+                            Max Font Size
+                        </label>{" "}
+                        <br />
                         <input
                             onBlur={handlemaxpx}
                             type="number"
@@ -67,7 +70,10 @@ const App = () => {
                 </div>
                 <div className={`${styles.inputRowContainer}`}>
                     <div className={`${styles.inputContainer}`}>
-                        <label hmtlfor="min-vw">Min Viewport Size</label> <br />
+                        <label hmtlfor="min-vw" className={`${styles.label}`}>
+                            Min Viewport Size
+                        </label>{" "}
+                        <br />
                         <input
                             onBlur={handleMinVw}
                             type="number"
@@ -77,13 +83,16 @@ const App = () => {
                             Required
                         ></input>
                     </div>
-                    <div className={`${styles.inputContainer}`}>
-                        <label hmtlfor="max-vw">Max Viweport Size</label> <br />
+                    <div className={`${styles.inputContainer} mb-5`}>
+                        <label hmtlfor="max-vw" className={`${styles.label}`}>
+                            Max Viweport Size
+                        </label>{" "}
+                        <br />
                         <input
                             onBlur={handleMaxVw}
                             type="number"
                             id="max-vw"
-                            className={`${styles.input}`}
+                            className={`${styles.input} `}
                             placeholder="1200"
                             required
                         ></input>
@@ -92,7 +101,7 @@ const App = () => {
                 <button
                     onClick={handleSubmit}
                     type="submit"
-                    className="py-2 font-bold  border-black hover:bg-orange-300 hover:text-white text-orange-700"
+                    className="py-2 font-bold  border-black hover:bg-orange-300 hover:text-orange-700 text-orange-600 bg-orange-200 mt-5 transition duration-300"
                 >
                     Submit
                 </button>

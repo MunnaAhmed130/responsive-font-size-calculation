@@ -56,7 +56,7 @@ const App = () => {
                                     hmtlfor="min-fs"
                                     className={`${styles.label}`}
                                 >
-                                    Min Font Size
+                                    Min Font Size(Px)
                                 </label>
                             </div>
 
@@ -80,7 +80,7 @@ const App = () => {
                                     hmtlfor="max-fs"
                                     className={`${styles.label}`}
                                 >
-                                    Max Font Size
+                                    Max Font Size(Px)
                                 </label>
                             </div>
 

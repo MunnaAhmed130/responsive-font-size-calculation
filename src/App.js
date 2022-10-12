@@ -2,43 +2,70 @@ import React, { useState } from "react";
 import styles from "./styles.js";
 
 const App = () => {
-    const [minPx, setMinPx] = useState(null);
-    const [maxPx, setMaxPx] = useState(null);
-    const [minVw, setMinVw] = useState(null);
-    const [maxVw, setMaxVw] = useState(null);
-    // const [error, setError] = useState("");
+    const [variables, setVariables] = useState({
+        minPx: NaN,
+        maxPx: NaN,
+        minVw: NaN,
+        maxVw: NaN,
+    });
+    console.log(variables);
+    // const [minPx, setMinPx] = useState();
+    // const [maxPx, setMaxPx] = useState();
+    // const [minVw, setMinVw] = useState();
+    // const [maxVw, setMaxVw] = useState();
+    const [error, setError] = useState("");
+    const [showError, setShowError] = useState(false);
+
     const [responsiveFs, setResponsiveFs] = useState();
-    // console.log(error);
-    const handleminpx = (e) => {
-        // var minPxValue = e.target.value;
-        // console.log(minPxValue);
-
-        setMinPx(e.target.value);
+    // console.log(showError);
+    const handleValue = (e) => {
+        // console.log(e.target.name);
+        setVariables({ ...variables, [e.target.name]: e.target.value });
+        // const obj = { name: value };
+        // console.log(obj);
+        // setMinPx(e.target.value);
     };
-    const handlemaxpx = (e) => setMaxPx(e.target.value);
-    const handleMinVw = (e) => setMinVw(e.target.value);
-    const handleMaxVw = (e) => setMaxVw(e.target.value);
+    // const handleMinPx = (e) => setMaxPx(e.target.value);
 
-    var minRem = minPx / 16;
-    let maxRem = maxPx / 16;
-    console.log(minRem);
+    // const handlemaxpx = (e) => setMaxPx(e.target.value);
+    // const handleMinVw = (e) => setMinVw(e.target.value);
+    // const handleMaxVw = (e) => setMaxVw(e.target.value);
+
+    let minRem = variables.minPx / 16;
+    let maxRem = variables.maxPx / 16;
+    console.log(minRem, maxRem);
     // prettier-ignore
-    const middleVw = ((100 * (maxPx - minPx)) / (maxVw - minVw)).toPrecision(5);
-
+    const middleVw = ((100 * (variables.maxPx - variables.minPx)) / (variables.maxVw - variables.minVw)).toPrecision(5);
+    // console.log(middleVw);
     // prettier-ignore
-    const middleRem = ((((minVw * maxPx) - (maxVw * minPx)) / (minVw - maxVw)) / 16).toPrecision(5);
+    const middleRem = ((((variables.minVw * variables.maxPx) - (variables.maxVw * variables.minPx)) / (variables.minVw - variables.maxVw)) / 16).toPrecision(5);
+    console.log(middleRem);
 
+    const checkError = () => {
+        // prettier-ignore
+        if (variables.minPx !== undefined || NaN) {
+            setError("This field");
+            setShowError(false);
+            setResponsiveFs(
+                `clamp(${minRem}rem ,${middleVw}vw + ${middleRem}rem ,  ${maxRem}rem)`
+            );
+        }
+    };
+    console.log(
+        `clamp(${minRem}rem ,${middleVw}vw + ${middleRem}rem ,  ${maxRem}rem)`
+    );
     const handleSubmit = (e) => {
-        // if (minPx === null) {
-        //     setError("This field cannot be empty");
-        // }
+        checkError();
         setResponsiveFs(
             `clamp(${minRem}rem ,${middleVw}vw + ${middleRem}rem ,  ${maxRem}rem)`
         );
+        // if (showError === false) {
+        // }
+
         e.preventDefault();
     };
-
-    // console.log(responsiveFs);
+    // console.log(minRem);
+    console.log(responsiveFs);
 
     return (
         <div className="App font-poppins antialiased max-w-4xl mx-auto text-center">
@@ -61,15 +88,18 @@ const App = () => {
                             </div>
 
                             <input
-                                onBlur={handleminpx}
+                                onChange={handleValue}
+                                name="minPx"
                                 type="number"
                                 id="min-fs"
                                 className={`${styles.input}`}
                                 placeholder="16"
-                                required
+                                step=".01"
+                                // autoFocus
                             ></input>
+
                             <p className={`${styles.error}`}>
-                                This field cannot be empty
+                                {setShowError && `${error}`}
                             </p>
                         </div>
                     </div>
@@ -85,12 +115,14 @@ const App = () => {
                             </div>
 
                             <input
-                                onBlur={handlemaxpx}
+                                onChange={handleValue}
+                                name="maxPx"
                                 type="number"
                                 id="max-fs"
                                 className={`${styles.input}`}
                                 placeholder="20"
-                                required
+                                step=".01"
+                                // required
                             ></input>
                             <p className={`${styles.error}`}>
                                 This field cannot be empty
@@ -111,12 +143,14 @@ const App = () => {
                             </div>
 
                             <input
-                                onBlur={handleMinVw}
+                                // onBlur={handleMinVw}
+                                onChange={handleValue}
+                                name="minVw"
                                 type="number"
                                 id="min-vw"
                                 className={`${styles.input} `}
                                 placeholder="320"
-                                required
+                                // required
                             ></input>
                             <p className={`${styles.error}`}>
                                 This field cannot be empty
@@ -136,12 +170,14 @@ const App = () => {
                             </div>
 
                             <input
-                                onBlur={handleMaxVw}
+                                // onBlur={handleMaxVw}
+                                onChange={handleValue}
+                                name="maxVw"
                                 type="number"
                                 id="max-vw"
                                 className={`${styles.input} `}
                                 placeholder="1200"
-                                required
+                                // required
                             ></input>
                             <p className={`${styles.error}`}>
                                 This field cannot be empty
@@ -160,6 +196,7 @@ const App = () => {
             </form>
             <div>
                 <p className="text-center mt-5 font-semibold text-orange-500 ">
+                    {/* {showError === false && `${responsiveFs}`} */}
                     {responsiveFs}
                 </p>
             </div>

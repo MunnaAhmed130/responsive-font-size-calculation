@@ -3,69 +3,133 @@ import styles from "./styles.js";
 
 const App = () => {
     const [variables, setVariables] = useState({
-        minPx: NaN,
-        maxPx: NaN,
-        minVw: NaN,
-        maxVw: NaN,
+        minPx: "",
+        maxPx: "",
+        minVw: "",
+        maxVw: "",
     });
-    console.log(variables);
-    // const [minPx, setMinPx] = useState();
-    // const [maxPx, setMaxPx] = useState();
-    // const [minVw, setMinVw] = useState();
-    // const [maxVw, setMaxVw] = useState();
-    const [error, setError] = useState("");
-    const [showError, setShowError] = useState(false);
+    console.log("variables:", variables);
 
+    const [minPxError, setMinPxError] = useState("");
+    const [maxPxError, setMaxPxError] = useState("");
+    const [minVwError, setMinVwError] = useState("");
+    const [maxVwError, setMaxVwError] = useState("");
+    const [showError, setShowError] = useState(true);
     const [responsiveFs, setResponsiveFs] = useState();
-    // console.log(showError);
-    const handleValue = (e) => {
-        // console.log(e.target.name);
-        setVariables({ ...variables, [e.target.name]: e.target.value });
-        // const obj = { name: value };
-        // console.log(obj);
-        // setMinPx(e.target.value);
-    };
-    // const handleMinPx = (e) => setMaxPx(e.target.value);
 
-    // const handlemaxpx = (e) => setMaxPx(e.target.value);
-    // const handleMinVw = (e) => setMinVw(e.target.value);
-    // const handleMaxVw = (e) => setMaxVw(e.target.value);
+    const handleValue = (e) => {
+        setVariables({
+            ...variables,
+            [e.target.name]: e.target.value,
+        });
+
+        // this code will set and empty string on the result when an input field is empty
+        if (e.target.name === "minPx") {
+            if (e.target.value === "") {
+                setMinPxError("This field cannot be empty");
+                setResponsiveFs("");
+            } else {
+                setMinPxError("");
+            }
+        } else if (e.target.name === "maxPx") {
+            if (e.target.value === "") {
+                setMaxPxError("This field cannot be empty");
+                setResponsiveFs("");
+            } else {
+                setMaxPxError("");
+            }
+        } else if (e.target.name === "minVw") {
+            if (e.target.value === "") {
+                setMinVwError("This field cannot be empty");
+                setResponsiveFs("");
+            } else {
+                setMinVwError("");
+            }
+        } else if (e.target.name === "maxVw") {
+            if (e.target.value === "") {
+                setMaxVwError("This field cannot be empty");
+                setResponsiveFs("");
+            } else {
+                setMaxVwError("");
+            }
+        }
+        // this code will empty the string when submit button is clicked
+        // if (e.target.name === "minPx") {
+        //     e.target.value === ""
+        //         ? setMinPxError("This field cannot be empty")
+        //         : setMinPxError("");
+        // } else if (e.target.name === "maxPx") {
+        //     e.target.value === ""
+        //         ? setMaxPxError("This field cannot be empty")
+        //         : setMaxPxError("");
+        // } else if (e.target.name === "minVw") {
+        //     e.target.value === ""
+        //         ? setMinVwError("This field cannot be empty")
+        //         : setMinVwError("");
+        // } else if (e.target.name === "maxVw") {
+        //     e.target.value === ""
+        //         ? setMaxVwError("This field cannot be empty")
+        //         : setMaxVwError("");
+        // }
+    };
 
     let minRem = variables.minPx / 16;
     let maxRem = variables.maxPx / 16;
-    console.log(minRem, maxRem);
+
     // prettier-ignore
     const middleVw = ((100 * (variables.maxPx - variables.minPx)) / (variables.maxVw - variables.minVw)).toPrecision(5);
-    // console.log(middleVw);
+
     // prettier-ignore
     const middleRem = ((((variables.minVw * variables.maxPx) - (variables.maxVw * variables.minPx)) / (variables.minVw - variables.maxVw)) / 16).toPrecision(5);
-    console.log(middleRem);
 
     const checkError = () => {
-        // prettier-ignore
-        if (variables.minPx !== undefined || NaN) {
-            setError("This field");
+        if (variables.minPx === "") {
+            setMinPxError("This field cannot be empty");
+            setShowError(true);
+        } else {
+            setMinPxError("");
+        }
+
+        if (variables.maxPx === "") {
+            setMaxPxError("This field cannot be empty");
+        } else {
+            setMaxPxError("");
+        }
+
+        if (variables.minVw === "") {
+            setMinVwError("This field cannot be empty");
+        } else {
+            setMinVwError("");
+        }
+
+        if (variables.maxVw === "") {
+            setMaxVwError("This field cannot be empty");
+        } else {
+            setMaxVwError("");
+        }
+        if (
+            (variables.minPx &&
+                variables.maxPx &&
+                variables.maxVw &&
+                variables.minVw) !== ""
+        ) {
             setShowError(false);
+            console.log("no error");
             setResponsiveFs(
                 `clamp(${minRem}rem ,${middleVw}vw + ${middleRem}rem ,  ${maxRem}rem)`
             );
+        } else {
+            setShowError(true);
+            console.log("error");
         }
     };
-    console.log(
-        `clamp(${minRem}rem ,${middleVw}vw + ${middleRem}rem ,  ${maxRem}rem)`
-    );
-    const handleSubmit = (e) => {
-        checkError();
-        setResponsiveFs(
-            `clamp(${minRem}rem ,${middleVw}vw + ${middleRem}rem ,  ${maxRem}rem)`
-        );
-        // if (showError === false) {
-        // }
 
+    const handleSubmit = (e) => {
         e.preventDefault();
+        checkError();
     };
     // console.log(minRem);
-    console.log(responsiveFs);
+    // console.log("responsive font size :", responsiveFs);
 
     return (
         <div className="App font-poppins antialiased max-w-4xl mx-auto text-center">
@@ -95,11 +159,14 @@ const App = () => {
                                 className={`${styles.input}`}
                                 placeholder="16"
                                 step=".01"
+                                // required
                                 // autoFocus
                             ></input>
 
                             <p className={`${styles.error}`}>
-                                {setShowError && `${error}`}
+                                {/* {setShowError && `${error}`} */}
+                                {/* {warning.minPxError} */}
+                                {minPxError}
                             </p>
                         </div>
                     </div>
@@ -125,7 +192,8 @@ const App = () => {
                                 // required
                             ></input>
                             <p className={`${styles.error}`}>
-                                This field cannot be empty
+                                {/* {warning.maxPxError} */}
+                                {maxPxError}
                             </p>
                         </div>
                     </div>
@@ -153,7 +221,8 @@ const App = () => {
                                 // required
                             ></input>
                             <p className={`${styles.error}`}>
-                                This field cannot be empty
+                                {/* {warning.minVwError} */}
+                                {minVwError}
                             </p>
                         </div>
                     </div>
@@ -180,7 +249,8 @@ const App = () => {
                                 // required
                             ></input>
                             <p className={`${styles.error}`}>
-                                This field cannot be empty
+                                {/* {warning.maxVwError} */}
+                                {maxVwError}
                             </p>
                         </div>
                     </div>
@@ -196,8 +266,8 @@ const App = () => {
             </form>
             <div>
                 <p className="text-center mt-5 font-semibold text-orange-500 ">
-                    {/* {showError === false && `${responsiveFs}`} */}
-                    {responsiveFs}
+                    {showError === false ? `${responsiveFs}` : ""}
+                    {/* {responsiveFs} */}
                 </p>
             </div>
         </div>

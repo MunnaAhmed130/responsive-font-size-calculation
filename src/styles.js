@@ -5,8 +5,8 @@ const styles = {
         "bg-orange-100 flex-col flex justify-evenly xs:flex-row ",
     inputColContainer: "   mt-10  text-center xs:text-left ",
     inputContainer: "mx-2 text-center xs:text-left",
-    input: "peer solid focus:outline-0 focus:border-orange-500 w-full placeholder:text-center placeholder:text-orange-200 pl-2 text-center xs:text-left xs:placeholder:text-left  border  text-orange-500 font-semibold ",
+    input: " solid focus:outline-0 focus:border-orange-500 w-full placeholder:text-center placeholder:text-orange-200 pl-2 text-center xs:text-left xs:placeholder:text-left  border  text-orange-500 font-semibold ",
     label: "pl-2 font-medium text-white xs:text-left text-center w-full block",
-    error: "hidden peer-invalid:block text-red-600 font-medium bg-orange-0",
+    error: " text-red-600 font-medium bg-orange-0",
 };
 export default styles;

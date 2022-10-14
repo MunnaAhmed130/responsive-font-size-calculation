@@ -8,7 +8,7 @@ const App = () => {
         minVw: "",
         maxVw: "",
     });
-    console.log("variables:", variables);
+    // console.log("variables:", variables);
 
     const [minPxError, setMinPxError] = useState("");
     const [maxPxError, setMaxPxError] = useState("");
@@ -114,13 +114,13 @@ const App = () => {
                 variables.minVw) !== ""
         ) {
             setShowError(false);
-            console.log("no error");
+            // console.log("no error");
             setResponsiveFs(
                 `clamp(${minRem}rem ,${middleVw}vw + ${middleRem}rem ,  ${maxRem}rem)`
             );
         } else {
             setShowError(true);
-            console.log("error");
+            // console.log("error");
         }
     };
 

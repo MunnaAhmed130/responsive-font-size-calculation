@@ -218,7 +218,7 @@ const App = () => {
                                 type="number"
                                 id="min-vw"
                                 className={`${styles.input} `}
-                                placeholder="320"
+                                placeholder="372"
                                 // required
                             ></input>
                             <p className={`${styles.error}`}>

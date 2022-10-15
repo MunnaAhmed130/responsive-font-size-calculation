@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import styles from "./styles.js";
 
 const App = () => {
+    const precisionLimit = 6;
     const [variables, setVariables] = useState({
         minPx: "",
         maxPx: "",
@@ -77,10 +78,10 @@ const App = () => {
     let maxRem = variables.maxPx / 16;
 
     // prettier-ignore
-    const middleVw = ((100 * (variables.maxPx - variables.minPx)) / (variables.maxVw - variables.minVw)).toPrecision(5);
+    const middleVw = ((100 * (variables.maxPx - variables.minPx)) / (variables.maxVw - variables.minVw)).toPrecision(precisionLimit);
 
     // prettier-ignore
-    const middleRem = ((((variables.minVw * variables.maxPx) - (variables.maxVw * variables.minPx)) / (variables.minVw - variables.maxVw)) / 16).toPrecision(5);
+    const middleRem = ((((variables.minVw * variables.maxPx) - (variables.maxVw * variables.minPx)) / (variables.minVw - variables.maxVw)) / 16).toPrecision(precisionLimit);
 
     const checkError = () => {
         if (variables.minPx === "") {

@@ -1,44 +1,22 @@
 import React, { useState } from "react";
 import styles from "../styles";
 
-const RTPConverter = () => {
-    const [pxValue, setPxValue] = useState("");
+const PTRConverter = () => {
+    const [remValue, setRemValue] = useState("");
 
-    const handleRemValue = (e) => {
-        let remValue = e.target.value;
-        let pxValue = remValue * 16;
-        setPxValue(pxValue);
+    const handlePxValue = (e) => {
+        let pxValue = e.target.value;
+        let remValue = pxValue / 16;
+        setRemValue(remValue);
     };
 
     return (
-        <div>
-            <h2 className={`${styles.heading2}`}>Rem To Px Converter</h2>
+        <div className="mb-10">
+            <h2 className={`${styles.heading2}`}>Px To Rem Converter</h2>
             <form className={`${styles.form} mt-10`}>
                 <div className="bg-orange-100  flex xs:flex-row flex-col justify-evenly py-10">
                     <div className="mx-2 text-center xs:text-left xs:pb-0 pb-10">
                         <div className=" bg-orange-400 ">
-                            <label
-                                hmtlfor="rem-value"
-                                className={`${styles.label}`}
-                            >
-                                Font Size(Rem)
-                            </label>
-                        </div>
-
-                        <input
-                            onChange={handleRemValue}
-                            name="rem-value"
-                            type="number"
-                            id="rem-value"
-                            className={`${styles.placeholder} ${styles.border}  w-full  pl-2 text-center xs:text-left    font-semibold`}
-                            placeholder="1"
-                            step=".01"
-                            // required
-                            // autoFocus
-                        ></input>
-                    </div>
-                    <div className="mx-2 text-center xs:text-center  ">
-                        <div className=" bg-orange-400 text-left ">
                             <label
                                 hmtlfor="px-value"
                                 className={`${styles.label}`}
@@ -48,12 +26,34 @@ const RTPConverter = () => {
                         </div>
 
                         <input
-                            value={pxValue}
+                            onChange={handlePxValue}
                             name="px-value"
                             type="number"
                             id="px-value"
                             className={`${styles.placeholder} ${styles.border}  w-full  pl-2 text-center xs:text-left    font-semibold`}
                             placeholder="16"
+                            step=".01"
+                            // required
+                            // autoFocus
+                        ></input>
+                    </div>
+                    <div className="mx-2 text-center xs:text-center  ">
+                        <div className=" bg-orange-400 text-left ">
+                            <label
+                                hmtlfor="rem-value"
+                                className={`${styles.label}`}
+                            >
+                                Font Size(Rem)
+                            </label>
+                        </div>
+
+                        <input
+                            value={remValue}
+                            name="rem-value"
+                            type="number"
+                            id="rem-value"
+                            className={`${styles.placeholder} ${styles.border}  w-full  pl-2 text-center xs:text-left    font-semibold`}
+                            placeholder="1"
                             step=".01"
                             // required
                             // autoFocus
@@ -67,4 +67,4 @@ const RTPConverter = () => {
     );
 };
 
-export default RTPConverter;
+export default PTRConverter;

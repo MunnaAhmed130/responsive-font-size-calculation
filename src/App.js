@@ -10,7 +10,7 @@ const App = () => {
         maxVw: "",
     });
     // console.log("variables:", variables);
-
+    const [pxValue, setPxValue] = useState("");
     const [minPxError, setMinPxError] = useState("");
     const [maxPxError, setMaxPxError] = useState("");
     const [minVwError, setMinVwError] = useState("");
@@ -83,6 +83,12 @@ const App = () => {
     // prettier-ignore
     const middleRem = ((((variables.minVw * variables.maxPx) - (variables.maxVw * variables.minPx)) / (variables.minVw - variables.maxVw)) / 16).toPrecision(precisionLimit);
 
+    const handleRemValue = (e) => {
+        let remValue = e.target.value;
+        let pxValue = remValue * 16;
+        setPxValue(pxValue);
+    };
+
     const checkError = () => {
         if (variables.minPx === "") {
             setMinPxError("This field cannot be empty");
@@ -129,147 +135,215 @@ const App = () => {
         e.preventDefault();
         checkError();
     };
+
+    const checkError2 = () => {};
+    const handleSubmit2 = (e) => {
+        e.preventDefault();
+        checkError2();
+    };
     // console.log(minRem);
     // console.log("responsive font size :", responsiveFs);
 
     return (
-        <div className="App font-poppins antialiased max-w-4xl mx-auto text-center">
-            <h1 className={`${styles.heading1}`}>Responsive Font size</h1>
-            <span className="text-center inline-block m-auto pb-10 font-black">
-                (Using Clamp)
-            </span>
-            {/* <h2>How to use</h2> */}
-            <form className={`${styles.form}`} onSubmit={handleSubmit}>
-                <div className={`${styles.inputRowContainer}`}>
-                    <div className={`${styles.inputColContainer}`}>
-                        <div className={`${styles.inputContainer}`}>
-                            <div className="bg-orange-400 text-left">
-                                <label
-                                    hmtlfor="min-fs"
-                                    className={`${styles.label}`}
-                                >
-                                    Min Font Size(Px)
-                                </label>
-                            </div>
-
-                            <input
-                                onChange={handleValue}
-                                name="minPx"
-                                type="number"
-                                id="min-fs"
-                                className={`${styles.input}`}
-                                placeholder="16"
-                                step=".01"
-                                // required
-                                // autoFocus
-                            ></input>
-
-                            <p className={`${styles.error}`}>
-                                {/* {setShowError && `${error}`} */}
-                                {/* {warning.minPxError} */}
-                                {minPxError}
-                            </p>
-                        </div>
-                    </div>
-                    <div className={`${styles.inputColContainer}`}>
-                        <div className={`${styles.inputContainer}`}>
-                            <div className="bg-orange-400 text-left">
-                                <label
-                                    hmtlfor="max-fs"
-                                    className={`${styles.label}`}
-                                >
-                                    Max Font Size(Px)
-                                </label>
-                            </div>
-
-                            <input
-                                onChange={handleValue}
-                                name="maxPx"
-                                type="number"
-                                id="max-fs"
-                                className={`${styles.input}`}
-                                placeholder="20"
-                                step=".01"
-                                // required
-                            ></input>
-                            <p className={`${styles.error}`}>
-                                {/* {warning.maxPxError} */}
-                                {maxPxError}
-                            </p>
-                        </div>
-                    </div>
-                </div>
-                <div className={`${styles.inputRowContainer}`}>
-                    <div className={`${styles.inputColContainer}`}>
-                        <div className={`${styles.inputContainer}`}>
-                            <div className="bg-orange-400 text-left">
-                                <label
-                                    hmtlfor="min-vw"
-                                    className={`${styles.label}`}
-                                >
-                                    Min Viewport Size
-                                </label>
-                            </div>
-
-                            <input
-                                // onBlur={handleMinVw}
-                                onChange={handleValue}
-                                name="minVw"
-                                type="number"
-                                id="min-vw"
-                                className={`${styles.input} `}
-                                placeholder="372"
-                                // required
-                            ></input>
-                            <p className={`${styles.error}`}>
-                                {/* {warning.minVwError} */}
-                                {minVwError}
-                            </p>
-                        </div>
-                    </div>
-
-                    <div className={`${styles.inputColContainer} `}>
-                        <div className={`${styles.inputContainer} mb-10`}>
-                            <div className="bg-orange-400 text-left">
-                                <label
-                                    hmtlfor="max-vw"
-                                    className={`${styles.label}`}
-                                >
-                                    Max Viweport Size
-                                </label>
-                            </div>
-
-                            <input
-                                // onBlur={handleMaxVw}
-                                onChange={handleValue}
-                                name="maxVw"
-                                type="number"
-                                id="max-vw"
-                                className={`${styles.input} `}
-                                placeholder="1200"
-                                // required
-                            ></input>
-                            <p className={`${styles.error}`}>
-                                {/* {warning.maxVwError} */}
-                                {maxVwError}
-                            </p>
-                        </div>
-                    </div>
-                </div>
-                <div>
-                    <button
-                        type="submit"
-                        className="py-2 font-bold  border-black hover:bg-orange-300 hover:text-orange-700 text-orange-600 bg-orange-200  transition duration-300 w-40 rounded mt-10"
-                    >
-                        Submit
-                    </button>
-                </div>
-            </form>
+        <div className="font-baijamjuree max-w-4xl mx-auto text-center">
             <div>
-                <p className="text-center mt-5 font-semibold text-orange-500 ">
-                    {showError === false ? `${responsiveFs}` : ""}
-                    {/* {responsiveFs} */}
-                </p>
+                <h1 className={`${styles.heading1}`}>Responsive Font size</h1>
+                <span className="text-center inline-block m-auto pb-10 font-black">
+                    (Using Clamp)
+                </span>
+                {/* <h2>How to use</h2> */}
+                <form
+                    className="rounded-lg  flex flex-col mx-auto xxs:w-full px-2"
+                    onSubmit={handleSubmit}
+                >
+                    <div className="bg-orange-100 flex-col flex justify-evenly xs:flex-row ">
+                        <div className="mt-10">
+                            <div className="mx-2 text-center xs:text-left">
+                                <div className="bg-orange-400 text-left">
+                                    <label
+                                        hmtlfor="min-fs"
+                                        className={`${styles.label}`}
+                                    >
+                                        Min Font Size(Px)
+                                    </label>
+                                </div>
+
+                                <input
+                                    onChange={handleValue}
+                                    name="minPx"
+                                    type="number"
+                                    id="min-fs"
+                                    className={`${styles.placeholder} ${styles.border}  w-full  pl-2 text-center xs:text-left    font-semibold`}
+                                    placeholder="16"
+                                    step=".01"
+                                    // required
+                                    // autoFocus
+                                ></input>
+
+                                <p className={`${styles.error}`}>
+                                    {/* {setShowError && `${error}`} */}
+                                    {/* {warning.minPxError} */}
+                                    {minPxError}
+                                </p>
+                            </div>
+                        </div>
+                        <div className="mt-10">
+                            <div className="mx-2 text-center xs:text-left">
+                                <div className="bg-orange-400 text-left">
+                                    <label
+                                        hmtlfor="max-fs"
+                                        className={`${styles.label}`}
+                                    >
+                                        Max Font Size(Px)
+                                    </label>
+                                </div>
+
+                                <input
+                                    onChange={handleValue}
+                                    name="maxPx"
+                                    type="number"
+                                    id="max-fs"
+                                    className={`${styles.placeholder} ${styles.border}  w-full  pl-2 text-center xs:text-left    font-semibold`}
+                                    placeholder="20"
+                                    step=".01"
+                                    // required
+                                ></input>
+                                <p className={`${styles.error}`}>
+                                    {/* {warning.maxPxError} */}
+                                    {maxPxError}
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div className="bg-orange-100 flex-col flex justify-evenly xs:flex-row ">
+                        <div className="mt-10">
+                            <div className="mx-2 text-center xs:text-left">
+                                <div className="bg-orange-400 text-left">
+                                    <label
+                                        hmtlfor="min-vw"
+                                        className={`${styles.label}`}
+                                    >
+                                        Min Viewport Size
+                                    </label>
+                                </div>
+
+                                <input
+                                    // onBlur={handleMinVw}
+                                    onChange={handleValue}
+                                    name="minVw"
+                                    type="number"
+                                    id="min-vw"
+                                    className={`${styles.placeholder} ${styles.border}  w-full  pl-2 text-center xs:text-left    font-semibold`}
+                                    placeholder="372"
+                                    // required
+                                ></input>
+                                <p className={`${styles.error}`}>
+                                    {/* {warning.minVwError} */}
+                                    {minVwError}
+                                </p>
+                            </div>
+                        </div>
+
+                        <div className="mt-10">
+                            <div className="mx-2 text-center xs:text-left mb-10 ">
+                                <div className="bg-orange-400 text-left">
+                                    <label
+                                        hmtlfor="max-vw"
+                                        className={`${styles.label}`}
+                                    >
+                                        Max Viweport Size
+                                    </label>
+                                </div>
+
+                                <input
+                                    // onBlur={handleMaxVw}
+                                    onChange={handleValue}
+                                    name="maxVw"
+                                    type="number"
+                                    id="max-vw"
+                                    className={`${styles.placeholder} ${styles.border}  w-full  pl-2 text-center xs:text-left    font-semibold`}
+                                    placeholder="1200"
+                                    // required
+                                ></input>
+                                <p className={`${styles.error}`}>
+                                    {/* {warning.maxVwError} */}
+                                    {maxVwError}
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div>
+                        <button
+                            type="submit"
+                            className="py-2 font-bold  border-black hover:bg-orange-300 hover:text-orange-700 text-orange-600 bg-orange-200  transition duration-300 w-40 rounded mt-10"
+                        >
+                            Submit
+                        </button>
+                    </div>
+                </form>
+                <div>
+                    <p className="text-center mt-5 font-semibold text-orange-500 ">
+                        {showError === false ? `${responsiveFs}` : ""}
+                        {/* {responsiveFs} */}
+                    </p>
+                </div>
+            </div>
+            <div className="">
+                <h2 className={`${styles.heading2}`}>Rem to Px Converter</h2>
+                <form
+                    className="mt-10 bg-orange-100 rounded-lg flex xs:flex-row flex-col  xxs:w-full"
+                    onSubmit={handleSubmit2}
+                >
+                    <div className=" text-center xs:text-center mx-auto py-5">
+                        <div className=" bg-orange-400 text-left ">
+                            <label
+                                hmtlfor="rem-value"
+                                className={`${styles.label}`}
+                            >
+                                Font Size(Rem)
+                            </label>
+                        </div>
+
+                        <input
+                            onChange={handleRemValue}
+                            name="rem-value"
+                            type="number"
+                            id="rem-value"
+                            className={`${styles.placeholder} ${styles.border}  w-full  pl-2 text-center xs:text-left    font-semibold`}
+                            placeholder="16"
+                            step=".01"
+                            // required
+                            // autoFocus
+                        ></input>
+
+                        <p className={`${styles.error}`}>{minPxError}</p>
+                    </div>
+                    <div className=" text-center xs:text-center mx-auto py-5">
+                        <div className=" bg-orange-400 text-left ">
+                            <label
+                                hmtlfor="fs-rem"
+                                className={`${styles.label}`}
+                            >
+                                Font Size(Px)
+                            </label>
+                        </div>
+
+                        <input
+                            value={pxValue}
+                            name="px-value"
+                            type="number"
+                            id="px-value"
+                            className={`${styles.placeholder} ${styles.border}  w-full  pl-2 text-center xs:text-left    font-semibold`}
+                            placeholder="16"
+                            step=".01"
+                            // required
+                            // autoFocus
+                        ></input>
+
+                        <p className={`${styles.error}`}>{minPxError}</p>
+                    </div>
+                    {/* <div> */}
+                </form>
             </div>
         </div>
     );

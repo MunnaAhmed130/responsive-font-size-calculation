@@ -11,7 +11,8 @@ module.exports = {
                 dimBlue: "rgba(9, 151, 124, 0.1)",
             },
             fontFamily: {
-                poppins: ["Bai Jamjuree", "Poppins", "sans-serif"],
+                poppins: ["Poppins", "sans-serif"],
+                baijamjuree: ["Bai Jamjuree", "sans-serif"],
             },
         },
         screens: {

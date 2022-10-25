@@ -19,10 +19,12 @@ const RTPConverter = () => {
     return (
         <div>
             <h2 className={`${styles.heading2}`}>Rem To Px Converter</h2>
-            <form className={`${styles.form} mt-10`}>
-                <div className={`${styles.flexEvenly} bg py-10`}>
-                    <div className="mx-2 text-center xs:pb-10 py-10">
-                        <div className=" bg-orange-400 ">
+            <form className={`${styles.form} mt-10 `}>
+                <div
+                    className={`${styles.flexEvenly} bg-slate-100 py-10 shadow-lg shadow-slate-200`}
+                >
+                    <div className="mx-2 text-center ">
+                        <div className={`${styles.labelBg}`}>
                             <label
                                 hmtlfor="remValue"
                                 className={`${styles.label}`}
@@ -38,15 +40,15 @@ const RTPConverter = () => {
                             name="remValue"
                             type="number"
                             id="remValue"
-                            className={`${styles.placeholder} ${styles.border} ${styles.input}  w-full  pl-2 text-center    font-semibold`}
+                            className={`${styles.placeholder} ${styles.border} ${styles.input}  w-full  pl-2 text-center font-semibold `}
                             placeholder="1"
                             step="any"
                             // required
                             // autoFocus
                         ></input>
                     </div>
-                    <div className="mx-2 text-center  py-10">
-                        <div className=" bg-orange-400 text-left ">
+                    <div className="mx-2 text-center">
+                        <div className={`${styles.labelBg}`}>
                             <label
                                 hmtlfor="px-value"
                                 className={`${styles.label}`}
@@ -62,7 +64,7 @@ const RTPConverter = () => {
                             name="pxValue"
                             type="number"
                             id="pxValue"
-                            className={`${styles.placeholder} ${styles.border} ${styles.input} w-full pl-2 text-center font-semibold`}
+                            className={`${styles.placeholder} ${styles.border} ${styles.input} w-full pl-2 text-center font-semibold `}
                             placeholder="16"
                             step="any"
                             // required

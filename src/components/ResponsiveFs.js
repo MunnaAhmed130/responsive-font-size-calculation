@@ -146,125 +146,122 @@ const ResponsiveFs = () => {
             >
                 <div className="shadow-lg shadow-slate-200">
                     <div className={`${styles.flexEvenly} ${styles.bg}`}>
-                        {/* <div className="mt-10"> */}
-                        <div
-                            className={`${styles.marginXT} text-center border border-slate-200 `}
-                        >
-                            <div className="bg-400">
-                                <label
-                                    hmtlfor="min-fs"
-                                    className={`${styles.label}`}
-                                >
-                                    Min Font Size(Px)
-                                </label>
+                        <div className="">
+                            <div
+                                className={`${styles.marginXT} text-center border `}
+                            >
+                                <div className={`${styles.labelBg}`}>
+                                    <label
+                                        hmtlfor="min-fs"
+                                        className={`${styles.label}`}
+                                    >
+                                        Min Font Size(Px)
+                                    </label>
+                                </div>
+
+                                <input
+                                    onChange={handleValue}
+                                    name="minPx"
+                                    type="number"
+                                    id="min-fs"
+                                    className={`${styles.placeholder} ${styles.border} ${styles.input}`}
+                                    placeholder="16"
+                                    step="any"
+                                    // required
+                                    // autoFocus
+                                ></input>
                             </div>
-
-                            <input
-                                onChange={handleValue}
-                                name="minPx"
-                                type="number"
-                                id="min-fs"
-                                className={`${styles.placeholder} ${styles.border} ${styles.input}`}
-                                placeholder="16"
-                                step="any"
-                                // required
-                                // autoFocus
-                            ></input>
-
                             <p className={`${styles.error}`}>
                                 {/* {setShowError && `${error}`} */}
                                 {/* {warning.minPxError} */}
                                 {minPxError}
                             </p>
                         </div>
-                        {/* </div> */}
-                        {/* <div className="mt-10"> */}
-                        <div
-                            className={`${styles.marginXT} text-center border border-slate-200`}
-                        >
-                            <div className="bg-slate-100">
-                                <label
-                                    hmtlfor="max-fs"
-                                    className={`${styles.label}`}
-                                >
-                                    Max Font Size(Px)
-                                </label>
-                            </div>
+                        <div className="">
+                            <div
+                                className={`${styles.marginXT} text-center border ${styles.labelBg}`}
+                            >
+                                <div className="">
+                                    <label
+                                        hmtlfor="max-fs"
+                                        className={`${styles.label}`}
+                                    >
+                                        Max Font Size(Px)
+                                    </label>
+                                </div>
 
-                            <input
-                                onChange={handleValue}
-                                name="maxPx"
-                                type="number"
-                                id="max-fs"
-                                className={`${styles.placeholder} ${styles.border} ${styles.input}`}
-                                placeholder="20"
-                                step="any"
-                                // required
-                            ></input>
-                            <p className={`${styles.error}`}>
-                                {/* {warning.maxPxError} */}
-                                {maxPxError}
-                            </p>
+                                <input
+                                    onChange={handleValue}
+                                    name="maxPx"
+                                    type="number"
+                                    id="max-fs"
+                                    className={`${styles.placeholder} ${styles.border} ${styles.input}`}
+                                    placeholder="20"
+                                    step="any"
+                                    // required
+                                ></input>
+                            </div>
+                            <p className={`${styles.error}`}>{maxPxError}</p>
                         </div>
-                        {/* </div> */}
                     </div>
-                    <div className={`${styles.flexEvenly} ${styles.bg}`}>
-                        {/* <div className="mt-10"> */}
-                        <div
-                            className={`${styles.marginXT} text-center border border-slate-200 `}
-                        >
-                            <div className="">
-                                <label
-                                    hmtlfor="min-vw"
-                                    className={`${styles.label}`}
-                                >
-                                    Min Viewport Size
-                                </label>
-                            </div>
+                    <div className={`${styles.flexEvenly} ${styles.bg} pb-10`}>
+                        <div className="">
+                            <div
+                                className={`${styles.marginXT} text-center  border ${styles.labelBg} `}
+                            >
+                                <div className="">
+                                    <label
+                                        hmtlfor="min-vw"
+                                        className={`${styles.label}`}
+                                    >
+                                        Min Viewport Size
+                                    </label>
+                                </div>
 
-                            <input
-                                // onBlur={handleMinVw}
-                                onChange={handleValue}
-                                name="minVw"
-                                type="number"
-                                id="min-vw"
-                                className={`${styles.placeholder} ${styles.border} ${styles.input}`}
-                                placeholder="375"
-                                // required
-                            ></input>
+                                <input
+                                    // onBlur={handleMinVw}
+                                    onChange={handleValue}
+                                    name="minVw"
+                                    type="number"
+                                    id="min-vw"
+                                    className={`${styles.placeholder} ${styles.border} ${styles.input}`}
+                                    placeholder="375"
+                                    // required
+                                ></input>
+                            </div>
                             <p className={`${styles.error}`}>
                                 {/* {warning.minVwError} */}
                                 {minVwError}
                             </p>
                         </div>
-                        {/* </div> */}
+                        <div className="">
+                            <div
+                                className={`${styles.marginXT} text-center border ${styles.labelBg}`}
+                            >
+                                <div className="  ">
+                                    <label
+                                        hmtlfor="max-vw"
+                                        className={`${styles.label}`}
+                                    >
+                                        Max Viweport Size
+                                    </label>
+                                </div>
 
-                        {/* <div className="mt-10"> */}
-                        <div className={`${styles.marginXT} text-center mb-10`}>
-                            <div className="  ">
-                                <label
-                                    hmtlfor="max-vw"
-                                    className={`${styles.label}`}
-                                >
-                                    Max Viweport Size
-                                </label>
+                                <input
+                                    onChange={handleValue}
+                                    name="maxVw"
+                                    type="number"
+                                    id="max-vw"
+                                    className={`${styles.placeholder} ${styles.border} ${styles.input}`}
+                                    placeholder="1024"
+                                    // required
+                                ></input>
                             </div>
-
-                            <input
-                                onChange={handleValue}
-                                name="maxVw"
-                                type="number"
-                                id="max-vw"
-                                className={`${styles.placeholder} ${styles.border} ${styles.input}`}
-                                placeholder="1024"
-                                // required
-                            ></input>
                             <p className={`${styles.error}`}>
                                 {/* {warning.maxVwError} */}
                                 {maxVwError}
                             </p>
                         </div>
-                        {/* </div> */}
                     </div>
                 </div>
                 <div>
@@ -278,7 +275,7 @@ const ResponsiveFs = () => {
             </form>
 
             <div>
-                <p className="text-center mt-5 font-semibold text-orange-500 ">
+                <p className="text-center mt-5 font-semibold text-slate-500 bg-slate-100 rounded w-1/2 py-2 shadow-lg mx-auto">
                     {showError === false ? `${responsiveFs}` : ""}
                 </p>
             </div>

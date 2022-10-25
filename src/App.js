@@ -1,5 +1,4 @@
 import React from "react";
-import PTRConverter from "./components/PTRConverter";
 import ResponsiveFs from "./components/ResponsiveFs";
 import RTPConverter from "./components/RTPConverter";
 import { layout } from "./styles";
@@ -7,9 +6,12 @@ import { layout } from "./styles";
 const App = () => {
     return (
         <div className={`${layout.mainSection}`}>
-            <ResponsiveFs></ResponsiveFs>
-            <RTPConverter></RTPConverter>
-            <PTRConverter></PTRConverter>
+            <div className=" ">
+                <ResponsiveFs></ResponsiveFs>
+            </div>
+            <div className=" ">
+                <RTPConverter></RTPConverter>
+            </div>
         </div>
     );
 };

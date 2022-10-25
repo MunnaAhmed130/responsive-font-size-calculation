@@ -135,18 +135,22 @@ const ResponsiveFs = () => {
     return (
         <div>
             <h1 className={`${styles.heading1}`}>Responsive Font size</h1>
+
             <span className="inline-block m-auto pb-10 font-black">
                 (Using Clamp)
             </span>
-            {/* <h2>How to use</h2> */}
+
             <form
-                className={`${styles.form} flex flex-col`}
+                className={`${styles.form} flex flex-col `}
                 onSubmit={handleSubmit}
             >
-                <div className="bg-orange-100 flex flex-col justify-evenly xs:flex-row ">
-                    <div className="mt-10">
-                        <div className="mx-2 text-center xs:text-left">
-                            <div className="bg-orange-400 text-left">
+                <div className="shadow-lg shadow-slate-200">
+                    <div className={`${styles.flexEvenly} ${styles.bg}`}>
+                        {/* <div className="mt-10"> */}
+                        <div
+                            className={`${styles.marginXT} text-center border border-slate-200 `}
+                        >
+                            <div className="bg-400">
                                 <label
                                     hmtlfor="min-fs"
                                     className={`${styles.label}`}
@@ -160,9 +164,9 @@ const ResponsiveFs = () => {
                                 name="minPx"
                                 type="number"
                                 id="min-fs"
-                                className={`${styles.placeholder} ${styles.border}  w-full  pl-2 text-center xs:text-left    font-semibold`}
+                                className={`${styles.placeholder} ${styles.border} ${styles.input}`}
                                 placeholder="16"
-                                step=".01"
+                                step="any"
                                 // required
                                 // autoFocus
                             ></input>
@@ -173,10 +177,12 @@ const ResponsiveFs = () => {
                                 {minPxError}
                             </p>
                         </div>
-                    </div>
-                    <div className="mt-10">
-                        <div className="mx-2 text-center xs:text-left">
-                            <div className="bg-orange-400 text-left">
+                        {/* </div> */}
+                        {/* <div className="mt-10"> */}
+                        <div
+                            className={`${styles.marginXT} text-center border border-slate-200`}
+                        >
+                            <div className="bg-slate-100">
                                 <label
                                     hmtlfor="max-fs"
                                     className={`${styles.label}`}
@@ -190,9 +196,9 @@ const ResponsiveFs = () => {
                                 name="maxPx"
                                 type="number"
                                 id="max-fs"
-                                className={`${styles.placeholder} ${styles.border}  w-full  pl-2 text-center xs:text-left    font-semibold`}
+                                className={`${styles.placeholder} ${styles.border} ${styles.input}`}
                                 placeholder="20"
-                                step=".01"
+                                step="any"
                                 // required
                             ></input>
                             <p className={`${styles.error}`}>
@@ -200,12 +206,14 @@ const ResponsiveFs = () => {
                                 {maxPxError}
                             </p>
                         </div>
+                        {/* </div> */}
                     </div>
-                </div>
-                <div className="bg-orange-100 flex-col flex justify-evenly xs:flex-row ">
-                    <div className="mt-10">
-                        <div className="mx-2 text-center xs:text-left">
-                            <div className="bg-orange-400 text-left">
+                    <div className={`${styles.flexEvenly} ${styles.bg}`}>
+                        {/* <div className="mt-10"> */}
+                        <div
+                            className={`${styles.marginXT} text-center border border-slate-200 `}
+                        >
+                            <div className="">
                                 <label
                                     hmtlfor="min-vw"
                                     className={`${styles.label}`}
@@ -220,7 +228,7 @@ const ResponsiveFs = () => {
                                 name="minVw"
                                 type="number"
                                 id="min-vw"
-                                className={`${styles.placeholder} ${styles.border}  w-full  pl-2 text-center xs:text-left    font-semibold`}
+                                className={`${styles.placeholder} ${styles.border} ${styles.input}`}
                                 placeholder="375"
                                 // required
                             ></input>
@@ -229,11 +237,11 @@ const ResponsiveFs = () => {
                                 {minVwError}
                             </p>
                         </div>
-                    </div>
+                        {/* </div> */}
 
-                    <div className="mt-10">
-                        <div className="mx-2 text-center xs:text-left mb-10 ">
-                            <div className="bg-orange-400 text-left">
+                        {/* <div className="mt-10"> */}
+                        <div className={`${styles.marginXT} text-center mb-10`}>
+                            <div className="  ">
                                 <label
                                     hmtlfor="max-vw"
                                     className={`${styles.label}`}
@@ -243,12 +251,11 @@ const ResponsiveFs = () => {
                             </div>
 
                             <input
-                                // onBlur={handleMaxVw}
                                 onChange={handleValue}
                                 name="maxVw"
                                 type="number"
                                 id="max-vw"
-                                className={`${styles.placeholder} ${styles.border}  w-full  pl-2 text-center xs:text-left    font-semibold`}
+                                className={`${styles.placeholder} ${styles.border} ${styles.input}`}
                                 placeholder="1024"
                                 // required
                             ></input>
@@ -257,21 +264,22 @@ const ResponsiveFs = () => {
                                 {maxVwError}
                             </p>
                         </div>
+                        {/* </div> */}
                     </div>
                 </div>
                 <div>
                     <button
                         type="submit"
-                        className="py-2 font-bold  border-black hover:bg-orange-300 hover:text-orange-700 text-orange-600 bg-orange-200  transition duration-300 w-40 rounded mt-10"
+                        className={`${styles.button} ${styles.buttonHover} py-2 duration-300 w-40 mt-10`}
                     >
                         Submit
                     </button>
                 </div>
             </form>
+
             <div>
                 <p className="text-center mt-5 font-semibold text-orange-500 ">
                     {showError === false ? `${responsiveFs}` : ""}
-                    {/* {responsiveFs} */}
                 </p>
             </div>
         </div>

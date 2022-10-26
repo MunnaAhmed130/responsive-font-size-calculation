@@ -133,7 +133,7 @@ const ResponsiveFs = () => {
     // console.log("responsive font size :", responsiveFs);
 
     return (
-        <div>
+        <div className="relative mb-10">
             <h1 className={`${styles.heading1}`}>Responsive Font size</h1>
 
             <span className="inline-block m-auto pb-10 font-black">
@@ -146,11 +146,11 @@ const ResponsiveFs = () => {
             >
                 <div className="shadow-lg shadow-slate-200">
                     <div className={`${styles.flexEvenly} ${styles.bg}`}>
-                        <div className="">
+                        <div className="relative">
                             <div
-                                className={`${styles.marginXT} text-center border `}
+                                className={`${styles.marginXT} text-center ${styles.labelBg} `}
                             >
-                                <div className={`${styles.labelBg}`}>
+                                <div className={``}>
                                     <label
                                         hmtlfor="min-fs"
                                         className={`${styles.label}`}
@@ -170,16 +170,16 @@ const ResponsiveFs = () => {
                                     // required
                                     // autoFocus
                                 ></input>
+                                <p className={`${styles.error} `}>
+                                    {/* {setShowError && `${error}`} */}
+                                    {/* {warning.minPxError} */}
+                                    {minPxError}
+                                </p>
                             </div>
-                            <p className={`${styles.error}`}>
-                                {/* {setShowError && `${error}`} */}
-                                {/* {warning.minPxError} */}
-                                {minPxError}
-                            </p>
                         </div>
-                        <div className="">
+                        <div className="relative">
                             <div
-                                className={`${styles.marginXT} text-center border ${styles.labelBg}`}
+                                className={`${styles.marginXT} text-center  ${styles.labelBg}`}
                             >
                                 <div className="">
                                     <label
@@ -205,9 +205,9 @@ const ResponsiveFs = () => {
                         </div>
                     </div>
                     <div className={`${styles.flexEvenly} ${styles.bg} pb-10`}>
-                        <div className="">
+                        <div className="relative">
                             <div
-                                className={`${styles.marginXT} text-center  border ${styles.labelBg} `}
+                                className={`${styles.marginXT} text-center   ${styles.labelBg} `}
                             >
                                 <div className="">
                                     <label
@@ -234,9 +234,9 @@ const ResponsiveFs = () => {
                                 {minVwError}
                             </p>
                         </div>
-                        <div className="">
+                        <div className="relative">
                             <div
-                                className={`${styles.marginXT} text-center border ${styles.labelBg}`}
+                                className={`${styles.marginXT} text-center  ${styles.labelBg}`}
                             >
                                 <div className="  ">
                                     <label
@@ -273,12 +273,19 @@ const ResponsiveFs = () => {
                     </button>
                 </div>
             </form>
-
-            <div>
-                <p className="text-center mt-5 font-semibold text-slate-500 bg-slate-100 rounded w-1/2 py-2 shadow-lg mx-auto">
-                    {showError === false ? `${responsiveFs}` : ""}
+            {/* {showError === false ? ( */}
+            <div
+                className={`${
+                    responsiveFs === "" && "hidden"
+                } absolute margin-x-auto inset-x-0 mx-1 `}
+            >
+                <p className="text-center mt-5 font-semibold text-slate-500 bg-slate-100 rounded   p-3 shadow-lg ">
+                    {showError === false && `${responsiveFs}`}
                 </p>
             </div>
+            {/* ) : (
+                <div></div>
+            )} */}
         </div>
     );
 };

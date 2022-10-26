@@ -6,10 +6,10 @@ import { layout } from "./styles";
 const App = () => {
     return (
         <div className={`${layout.mainSection}`}>
-            <div className=" ">
+            <div className="pb-10">
                 <ResponsiveFs></ResponsiveFs>
             </div>
-            <div className=" ">
+            <div className=" mt-10">
                 <RTPConverter></RTPConverter>
             </div>
         </div>

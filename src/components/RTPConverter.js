@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import styles from "../styles";
 
 const RTPConverter = () => {
@@ -19,19 +19,18 @@ const RTPConverter = () => {
     return (
         <div>
             <h2 className={`${styles.heading2}`}>Rem To Px Converter</h2>
-            <form className={`${styles.form} mt-10 `}>
+            <form className={`${styles.form} my-10 `}>
                 <div
                     className={`${styles.flexEvenly} bg-slate-100 py-10 shadow-lg shadow-slate-200`}
                 >
-                    <div className="mx-2 text-center ">
-                        <div className={`${styles.labelBg}`}>
-                            <label
-                                hmtlfor="remValue"
-                                className={`${styles.label}`}
-                            >
-                                Font Size(Rem)
-                            </label>
-                        </div>
+                    <div
+                        className={`mx-2 text-center ${styles.labelBg} xs:mb-0 mb-10`}
+                    >
+                        {/* <div className={``}> */}
+                        <label hmtlfor="remValue" className={`${styles.label}`}>
+                            Font Size(Rem)
+                        </label>
+                        {/* </div> */}
 
                         <input
                             // onChange={handleRemValue}
@@ -47,8 +46,8 @@ const RTPConverter = () => {
                             // autoFocus
                         ></input>
                     </div>
-                    <div className="mx-2 text-center">
-                        <div className={`${styles.labelBg}`}>
+                    <div className={`mx-2 text-center ${styles.labelBg}`}>
+                        <div>
                             <label
                                 hmtlfor="px-value"
                                 className={`${styles.label}`}

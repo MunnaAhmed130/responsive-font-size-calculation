@@ -10,6 +10,7 @@ const ResponsiveFs = () => {
         maxVw: "",
     });
     // console.log("variables:", variables);
+
     const [minPxError, setMinPxError] = useState("");
     const [maxPxError, setMaxPxError] = useState("");
     const [minVwError, setMinVwError] = useState("");
@@ -167,12 +168,8 @@ const ResponsiveFs = () => {
                                     className={`${styles.placeholder} ${styles.border} ${styles.input}`}
                                     placeholder="16"
                                     step="any"
-                                    // required
-                                    // autoFocus
                                 ></input>
                                 <p className={`${styles.error} `}>
-                                    {/* {setShowError && `${error}`} */}
-                                    {/* {warning.minPxError} */}
                                     {minPxError}
                                 </p>
                             </div>
@@ -198,7 +195,6 @@ const ResponsiveFs = () => {
                                     className={`${styles.placeholder} ${styles.border} ${styles.input}`}
                                     placeholder="20"
                                     step="any"
-                                    // required
                                 ></input>
                             </div>
                             <p className={`${styles.error}`}>{maxPxError}</p>
@@ -219,20 +215,15 @@ const ResponsiveFs = () => {
                                 </div>
 
                                 <input
-                                    // onBlur={handleMinVw}
                                     onChange={handleValue}
                                     name="minVw"
                                     type="number"
                                     id="min-vw"
                                     className={`${styles.placeholder} ${styles.border} ${styles.input}`}
                                     placeholder="375"
-                                    // required
                                 ></input>
                             </div>
-                            <p className={`${styles.error}`}>
-                                {/* {warning.minVwError} */}
-                                {minVwError}
-                            </p>
+                            <p className={`${styles.error}`}>{minVwError}</p>
                         </div>
                         <div className="relative">
                             <div

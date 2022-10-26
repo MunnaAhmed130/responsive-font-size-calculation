@@ -4,13 +4,13 @@ import styles from "../styles";
 const RTPConverter = () => {
     const convertRemValue = (e) => {
         let remValue = e.target.value;
-        console.log(remValue);
+        // console.log(remValue);
         let pxValue = remValue * 16;
         document.getElementById("pxValue").value = pxValue;
     };
     const convertPxValue = (e) => {
         let pxValue = e.target.value;
-        console.log(pxValue);
+        // console.log(pxValue);
         let remValue = pxValue / 16;
         document.getElementById("remValue").value = remValue;
     };
@@ -26,24 +26,18 @@ const RTPConverter = () => {
                     <div
                         className={`mx-2 text-center ${styles.labelBg} xs:mb-0 mb-10`}
                     >
-                        {/* <div className={``}> */}
                         <label hmtlfor="remValue" className={`${styles.label}`}>
                             Font Size(Rem)
                         </label>
-                        {/* </div> */}
 
                         <input
-                            // onChange={handleRemValue}
                             onChange={convertRemValue}
-                            // value={pxValue}
                             name="remValue"
                             type="number"
                             id="remValue"
                             className={`${styles.placeholder} ${styles.border} ${styles.input}  w-full  pl-2 text-center font-semibold `}
                             placeholder="1"
                             step="any"
-                            // required
-                            // autoFocus
                         ></input>
                     </div>
                     <div className={`mx-2 text-center ${styles.labelBg}`}>
@@ -57,22 +51,16 @@ const RTPConverter = () => {
                         </div>
 
                         <input
-                            // value="16"
                             onChange={convertPxValue}
-                            // value={pxValue}
                             name="pxValue"
                             type="number"
                             id="pxValue"
                             className={`${styles.placeholder} ${styles.border} ${styles.input} w-full pl-2 text-center font-semibold `}
                             placeholder="16"
                             step="any"
-                            // required
-                            // autoFocus
                         ></input>
                     </div>
                 </div>
-
-                {/* <div> */}
             </form>
         </div>
     );

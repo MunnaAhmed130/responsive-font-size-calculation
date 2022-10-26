@@ -266,8 +266,8 @@ const ResponsiveFs = () => {
             </form>
             {/* {showError === false ? ( */}
             <div
-                className={`${
-                    responsiveFs === "" && "hidden"
+                className={`${responsiveFs === "" && "hidden"} ${
+                    showError === true && "hidden"
                 } absolute margin-x-auto inset-x-0 mx-1 `}
             >
                 <p className="text-center mt-5 font-semibold text-slate-500 bg-slate-100 rounded   p-3 shadow-lg ">

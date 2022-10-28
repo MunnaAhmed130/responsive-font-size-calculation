@@ -281,21 +281,26 @@ const ResponsiveFs = () => {
             >
                 <p className=" inline-block sm:text-lg text-base text-center mt-10 font-medium tracking-wide text-zinc-500 bg-slate-100 rounded px-5  py-3 shadow-lg ">
                     {showError === false && `${responsiveFs}`}
-                    <span className="relative ml-5">
+                    <div className="relative inline-block group ml-5">
                         <button
                             onClick={copyText}
                             className={`${
                                 textCopied === true
                                     ? "text-slate-500"
                                     : "text-slate-400"
-                            }    border-2 border-slate-300 px-1 rounded  hover:text-slate-500 peer `}
+                            }    border-2 border-slate-300 px-1 rounded  hover:text-slate-500  `}
                         >
                             <FontAwesomeIcon icon={faCopy} />
                         </button>
-                        <span className=" absolute bottom-full  mb-5   bg-slate-400  text-slate-100 text-sm p-2 rounded  hidden  peer-hover:block">
-                            {textCopied === true ? "Copied" : "Click to copy"}
-                        </span>
-                    </span>
+                        <div className="absolute bottom-full mx-auto inset-x-0  flex-col items-center hidden group-hover:flex mb-5">
+                            <span className=" relative  flex flex-col items-center -mb-2 whitespace-nowrap  bg-slate-400  text-slate-100 text-sm p-2 rounded ">
+                                {textCopied === true
+                                    ? "Copied"
+                                    : "Click to copy"}
+                            </span>
+                            <div class="w-3 h-3    rotate-45 bg-slate-400"></div>
+                        </div>
+                    </div>
                 </p>
             </div>
             {/* ) : (

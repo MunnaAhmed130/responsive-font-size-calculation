@@ -7,9 +7,9 @@ const styles = {
     bg: "bg-slate-100",
     border: "solid focus:outline-0 focus:border-slate-500  ",
     placeholder: "placeholder:text-center placeholder:text-slate-200 ",
-    label: "pl-2 text-lg font-medium text-slate-500 text-center w-full block py-1",
+    label: "pl-2 sm:text-lg text-base font-medium text-slate-500 text-center w-full block py-1",
     labelBg: "bg-slate-200 shadow-md shadow-slate-200",
-    input: "caret-slate-300 text-gray-400 w-full font-semibold text-center py-1 tracking-widest text-2xl focus:text-sky-300",
+    input: "caret-slate-300 text-gray-400 w-full font-semibold text-center py-1 tracking-widest sm:text-2xl text-xl focus:text-sky-300",
     error: "text-base text-center tracking-wide text-red-600 font-medium bg-orange-0 absolute margin-x-auto inset-x-0",
     button: "font-semibold bg-slate-100 text-slate-400 rounded transition shadow-lg shadow-slate-200",
     buttonHover:

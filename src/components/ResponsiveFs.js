@@ -1,4 +1,7 @@
 import React, { useState } from "react";
+// import ReactDOM from "react-dom";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faCopy } from "@fortawesome/free-solid-svg-icons";
 import styles from "../styles";
 
 const ResponsiveFs = () => {
@@ -16,6 +19,7 @@ const ResponsiveFs = () => {
     const [minVwError, setMinVwError] = useState("");
     const [maxVwError, setMaxVwError] = useState("");
     const [showError, setShowError] = useState(true);
+    const [textCopied, setTextCopied] = useState(false);
     const [responsiveFs, setResponsiveFs] = useState();
 
     const handleValue = (e) => {
@@ -115,9 +119,10 @@ const ResponsiveFs = () => {
                 variables.minVw) !== ""
         ) {
             setShowError(false);
+            setTextCopied(false);
             // console.log("no error");
             setResponsiveFs(
-                `clamp(${minRem}rem ,${middleVw}vw + ${middleRem}rem ,  ${maxRem}rem)`
+                `clamp( ${minRem}rem , ${middleVw}vw + ${middleRem}rem ,  ${maxRem}rem )`
             );
         } else {
             setShowError(true);
@@ -130,6 +135,10 @@ const ResponsiveFs = () => {
         checkError();
     };
 
+    const copyText = () => {
+        navigator.clipboard.writeText(responsiveFs);
+        setTextCopied(true);
+    };
     // console.log(minRem);
     // console.log("responsive font size :", responsiveFs);
 
@@ -268,10 +277,25 @@ const ResponsiveFs = () => {
             <div
                 className={`${responsiveFs === "" && "hidden"} ${
                     showError === true && "hidden"
-                } absolute margin-x-auto inset-x-0 mx-1 `}
+                } absolute mx-auto inset-x-0  `}
             >
-                <p className="text-center mt-5 font-semibold text-slate-500 bg-slate-100 rounded   p-3 shadow-lg ">
+                <p className=" inline-block sm:text-lg text-base text-center mt-10 font-medium tracking-wide text-zinc-500 bg-slate-100 rounded px-5  py-3 shadow-lg ">
                     {showError === false && `${responsiveFs}`}
+                    <span className="relative ml-5">
+                        <button
+                            onClick={copyText}
+                            className={`${
+                                textCopied === true
+                                    ? "text-slate-500"
+                                    : "text-slate-400"
+                            }    border-2 border-slate-300 px-1 rounded  hover:text-slate-500 peer `}
+                        >
+                            <FontAwesomeIcon icon={faCopy} />
+                        </button>
+                        <span className=" absolute bottom-full  mb-5   bg-slate-400  text-slate-100 text-sm p-2 rounded  hidden  peer-hover:block">
+                            {textCopied === true ? "Copied" : "Click to copy"}
+                        </span>
+                    </span>
                 </p>
             </div>
             {/* ) : (

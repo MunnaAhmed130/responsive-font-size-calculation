@@ -21,7 +21,7 @@ const RTPConverter = () => {
             <h2 className={`${styles.heading2}`}>Rem To Px Converter</h2>
             <form className={`${styles.form} my-10 `}>
                 <div
-                    className={`${styles.flexEvenly} bg-slate-100 py-10 shadow-lg shadow-slate-200`}
+                    className={`${styles.flexEvenly} bg-slate-100 dark:bg-slate-600 py-10 shadow-lg shadow-slate-200 dark:shadow-slate-600`}
                 >
                     <div
                         className={`mx-2 text-center ${styles.labelBg} xs:mb-0 mb-10`}

@@ -5,6 +5,7 @@ import {
     faCloudMoonRain,
     faEnvelope,
     faMoon,
+    faSun,
 } from "@fortawesome/free-solid-svg-icons";
 import { faCopy } from "@fortawesome/free-solid-svg-icons";
 import styles from "../styles";
@@ -178,27 +179,27 @@ const ResponsiveFs = () => {
     return (
         <div className="relative mb-10  ">
             <h1 className={`${styles.heading1}`}>Responsive Font size</h1>
-            <div className="absolute top-0 left-0 ml-5 mt-3">
-                <label className="toggleDarkBtn relative bg-[#111]  w-[50px] h-[26px] rounded-[50%] p-1 flex items-center justify-between">
+            <div className="fixed z-10 top-0 left-0 ml-5 mt-3">
+                <label
+                    className="toggleDarkBtn relative bg-[#111]  w-[55px] h-[26px] rounded-[50px] p-2 flex items-center justify-between  cursor-pointer scale-200 "
+                    for="theme"
+                >
                     <input
                         type="checkbox"
-                        className="opacity-0 w-0 h-0 peer"
+                        className="opacity-0 hidden  peer"
+                        id="theme"
                         onClick={() => setIsDarkMode(!isDarkMode)}
                     />
-                    <FontAwesomeIcon icon="fa-solid fa-moon" />
                     <FontAwesomeIcon
-                        icon={faCloudMoonRain}
-                        className="text-red-400"
+                        icon={faMoon}
+                        className="text-orange-400 text-[20px]"
                     />
-                    <FontAwesomeIcon icon={faMoon} className="text-red-400" />
-                    <span
-                        className="w-[22px] h-[22px] peer-checked:translate-x-[24px] transition-all slideBtnTg rounded-[35px]
-                     cursor-pointer  absolute inset-0   bg-white "
-                    ></span>
+                    <FontAwesomeIcon icon={faSun} className="text-orange-400" />
+                    <span className="absolute w-[22px] h-[22px] peer-checked:translate-x-[29px] transition-all slideBtnTg rounded-[35px]  top-[2px] left-[2px] bg-white "></span>
                 </label>
             </div>
 
-            <span className="inline-block m-auto pb-10 font-black">
+            <span className="inline-block m-auto pb-10 font-black dark:text-slate-300">
                 (Using Clamp)
             </span>
 
@@ -206,8 +207,8 @@ const ResponsiveFs = () => {
                 className={`${styles.form} flex flex-col `}
                 onSubmit={handleSubmit}
             >
-                <div className="shadow-lg shadow-slate-200">
-                    <div className={`${styles.flexEvenly} ${styles.bg}`}>
+                <div className="shadow-lg shadow-slate-200 dark:shadow-slate-600">
+                    <div className={`${styles.flexEvenly} ${styles.bg} `}>
                         <div className="relative">
                             <div
                                 className={`${styles.marginXT} text-center ${styles.labelBg} `}
@@ -331,26 +332,26 @@ const ResponsiveFs = () => {
                     showError === true && "hidden"
                 } absolute mx-auto inset-x-0  `}
             >
-                <p className=" inline-block sm:text-lg text-base text-center mt-10 font-medium tracking-wide text-zinc-500 bg-slate-100 rounded px-5  py-3 shadow-lg ">
+                <p className=" inline-block sm:text-lg text-base text-center mt-10 font-medium tracking-wide text-zinc-500 dark:text-slate-300 bg-slate-100 dark:bg-slate-600 rounded px-5  py-3 shadow-lg dark:shadow-slate-600">
                     {showError === false && `${responsiveFs}`}
                     <div className="relative inline-block group ml-5">
                         <button
                             onClick={copyText}
                             className={`${
                                 textCopied === true
-                                    ? "text-slate-500"
-                                    : "text-slate-400"
-                            }    border-2 border-slate-300 px-1 rounded  hover:text-slate-500  `}
+                                    ? "text-slate-500 dark:text-slate-400"
+                                    : "text-slate-400 dark:text-slate-300"
+                            }    border-2 border-slate-300 dark:border-slate-400 px-1 rounded  hover:text-slate-500 dark:hover:text-slate-400  `}
                         >
                             <FontAwesomeIcon icon={faCopy} />
                         </button>
                         <div className="absolute bottom-full mx-auto inset-x-0  flex-col items-center hidden group-hover:flex mb-5">
-                            <span className=" relative  flex flex-col items-center -mb-2 whitespace-nowrap  bg-slate-400  text-slate-100 text-sm p-2 rounded ">
+                            <span className=" relative  flex flex-col items-center -mb-2 whitespace-nowrap  bg-slate-400 dark:bg-slate-600 text-slate-100 dark:text-slate-300 text-sm p-2 rounded ">
                                 {textCopied === true
                                     ? "Copied"
                                     : "Click to copy"}
                             </span>
-                            <div class="w-3 h-3    rotate-45 bg-slate-400"></div>
+                            <div class="w-3 h-3 rotate-45 bg-slate-400 dark:bg-slate-600"></div>
                         </div>
                     </div>
                 </p>

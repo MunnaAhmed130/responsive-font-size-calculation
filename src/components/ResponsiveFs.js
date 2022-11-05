@@ -1,26 +1,58 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 // import ReactDOM from "react-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {
+    faCloudMoonRain,
+    faEnvelope,
+    faMoon,
+} from "@fortawesome/free-solid-svg-icons";
 import { faCopy } from "@fortawesome/free-solid-svg-icons";
 import styles from "../styles";
 
 const ResponsiveFs = () => {
+    // checks if darkMode is true or false
+    const [isDarkMode, setIsDarkMode] = useState(
+        () => localStorage.theme === "dark"
+    );
+
+    useEffect(() => {
+        const html = window.document.documentElement;
+
+        const prevTheme = isDarkMode ? "light" : "dark";
+        html.classList.remove(prevTheme);
+
+        const nextTheme = isDarkMode ? "dark" : "light";
+        html.classList.add(nextTheme);
+
+        localStorage.setItem("theme", nextTheme);
+    }, [isDarkMode]);
+
+    // precision
     const precisionLimit = 6;
+
     const [variables, setVariables] = useState({
         minPx: "",
         maxPx: "",
         minVw: "",
         maxVw: "",
     });
+
     // console.log("variables:", variables);
 
+    // error
     const [minPxError, setMinPxError] = useState("");
     const [maxPxError, setMaxPxError] = useState("");
     const [minVwError, setMinVwError] = useState("");
     const [maxVwError, setMaxVwError] = useState("");
+
+    // show responsiveFs on ui when showError is false
     const [showError, setShowError] = useState(true);
+
+    // store clamp
+    const [responsiveFs, setResponsiveFs] = useState("");
+
+    // copy text
     const [textCopied, setTextCopied] = useState(false);
-    const [responsiveFs, setResponsiveFs] = useState();
 
     const handleValue = (e) => {
         setVariables({
@@ -141,10 +173,30 @@ const ResponsiveFs = () => {
     };
     // console.log(minRem);
     // console.log("responsive font size :", responsiveFs);
+    // const [darkToggle, setDarkToggle] = useState(false);
 
     return (
-        <div className="relative mb-10">
+        <div className="relative mb-10  ">
             <h1 className={`${styles.heading1}`}>Responsive Font size</h1>
+            <div className="absolute top-0 left-0 ml-5 mt-3">
+                <label className="toggleDarkBtn relative bg-[#111]  w-[50px] h-[26px] rounded-[50%] p-1 flex items-center justify-between">
+                    <input
+                        type="checkbox"
+                        className="opacity-0 w-0 h-0 peer"
+                        onClick={() => setIsDarkMode(!isDarkMode)}
+                    />
+                    <FontAwesomeIcon icon="fa-solid fa-moon" />
+                    <FontAwesomeIcon
+                        icon={faCloudMoonRain}
+                        className="text-red-400"
+                    />
+                    <FontAwesomeIcon icon={faMoon} className="text-red-400" />
+                    <span
+                        className="w-[22px] h-[22px] peer-checked:translate-x-[24px] transition-all slideBtnTg rounded-[35px]
+                     cursor-pointer  absolute inset-0   bg-white "
+                    ></span>
+                </label>
+            </div>
 
             <span className="inline-block m-auto pb-10 font-black">
                 (Using Clamp)

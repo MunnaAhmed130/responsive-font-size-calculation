@@ -5,7 +5,7 @@ import { layout } from "./styles";
 
 const App = () => {
     return (
-        <div className="dark:bg-slate-500  transition-all">
+        <div className=" transition-all">
             <div className={`${layout.mainSection} `}>
                 <div className="pb-10">
                     <ResponsiveFs></ResponsiveFs>

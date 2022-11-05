@@ -181,7 +181,7 @@ const ResponsiveFs = () => {
             <h1 className={`${styles.heading1}`}>Responsive Font size</h1>
             <div className="fixed z-10 top-0 left-0 ml-5 mt-3">
                 <label
-                    className="toggleDarkBtn relative bg-[#111]  w-[55px] h-[26px] rounded-[50px] p-2 flex items-center justify-between  cursor-pointer scale-200 "
+                    className="toggleDarkBtn relative bg-[#111]  w-[55px] h-[26px] rounded-[50px] p-2 flex items-center justify-between  cursor-pointer scale-95 sm:scale-110 xs:scale-100 "
                     for="theme"
                 >
                     <input
